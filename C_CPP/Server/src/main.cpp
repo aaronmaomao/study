@@ -11,7 +11,7 @@
  */
 
 int main(int argc, char **argv) {
-	Server server("Server", 8889);
+	Server server("Server", 9999);
 	server.start();
 	string cmd;
 	cin>>cmd;
