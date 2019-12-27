@@ -29,6 +29,10 @@ public:
 	int add_client(Client*);
 	Client* re_client(string name);
 
+	int getPort() const {
+		return port;
+	}
+
 private:
 	string name { "Unknow" };
 	int port { 8888 };

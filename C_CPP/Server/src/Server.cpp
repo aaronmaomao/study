@@ -8,6 +8,7 @@
 #include "Server.h"
 
 #include <pthread.h>
+#include <stddef.h>
 #include <sys/socket.h>
 #include <iostream>
 
@@ -23,7 +24,8 @@ int Server::start() {
 	this->server_socket = socket(AF_INET, SOCK_STREAM, 0);
 	this->server_socket_addr.sin_family = AF_INET;
 	this->server_socket_addr.sin_addr.s_addr = INADDR_ANY;
-	this->server_socket_addr.sin_port = this->port;
+	this->server_socket_addr.sin_port  = this->port;
+	bind(this->server_socket, (sockaddr*)&(this->server_socket_addr), sizeof(this->server_socket_addr));
 	listen(server_socket, 20);
 
 	pthread_t accept_task_thread;
@@ -41,14 +43,14 @@ Client* Server::re_client(string name) {
 
 void* Server::do_accept_task(void *_server) {
 	Server *server = (Server*) _server;
-	cout << server->getName() << " : " << "acceptor task starting..." << endl;
+	cout << server->getName() << " : " << "acceptor task starting in " << server->getPort() << " ...." << endl;
 
 	while (1) {
 		sockaddr_in client_addr;
 		socklen_t client_addr_size;
 		int client_socket = accept(server->server_socket, (sockaddr*) &client_addr, &client_addr_size);
-
-		Client* client = new Client(client_socket);
+		cout << "Asdadasd";
+		Client *client = new Client(client_socket, *server);
 		server->add_client(client);
 	}
 
