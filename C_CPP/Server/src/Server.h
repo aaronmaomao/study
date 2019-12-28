@@ -33,6 +33,8 @@ public:
 		return port;
 	}
 
+	void sendToClient(Client*, char *msg, int len) const;
+
 private:
 	string name { "Unknow" };
 	int port { 8888 };
@@ -40,6 +42,7 @@ private:
 	sockaddr_in server_socket_addr { 0 };
 
 	vector<Client*> clients;
+
 	static void* do_accept_task(void *_server);
 };
 

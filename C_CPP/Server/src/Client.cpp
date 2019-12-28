@@ -13,6 +13,8 @@
 #include <cstdio>
 #include <iostream>
 
+#include "Server.h"
+
 using namespace std;
 
 Client::Client(int socket, const Server &server) :
@@ -32,6 +34,7 @@ void* Client::do_client_task(void *_client) {
 	do {
 		len = recv(client->getSocket(), (void*) buffer, buffer_size, 0);
 		printf("%d : %s", client->getSocket(), buffer);
+		client->getServer().sendToClient(client, buffer, len);
 	} while (len > 0);
 	cout << "socket " << client->getSocket() << " closed !" << endl;
 	return 0;

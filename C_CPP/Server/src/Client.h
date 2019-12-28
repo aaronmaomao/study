@@ -17,6 +17,11 @@ public:
 	int getSocket() const {
 		return socket;
 	}
+
+	const Server& getServer() const {
+		return server;
+	}
+
 private:
 	int socket;
 	const Server& server;

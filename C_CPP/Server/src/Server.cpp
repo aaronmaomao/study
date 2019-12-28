@@ -11,6 +11,7 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <iostream>
+#include <iterator>
 
 using namespace std;
 
@@ -41,6 +42,15 @@ int Server::add_client(Client*) {
 
 Client* Server::re_client(string name) {
 	return NULL;
+}
+
+void Server::sendToClient(Client *sender, char *msg, int len) const {
+	for (vector<Client*>::const_iterator iter = clients.begin(); iter != clients.end(); ++iter) {
+		Client *client = (Client*) *iter;
+		if (sender != client) {
+			send(client->getSocket(), msg, len, 0);
+		}
+	}
 }
 
 void* Server::do_accept_task(void *_server) {
