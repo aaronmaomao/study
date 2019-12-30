@@ -12,19 +12,19 @@ class Server;
 
 class Client {
 public:
-	Client(int socket, const Server& server);
+	Client(int socket, Server &server);
 	virtual ~Client();
 	int getSocket() const {
 		return socket;
 	}
 
-	const Server& getServer() const {
+	Server& getServer() const {
 		return server;
 	}
 
 private:
 	int socket;
-	const Server& server;
+	Server &server;
 
 	static void* do_client_task(void*);
 };

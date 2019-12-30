@@ -11,9 +11,6 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <iostream>
-#include <iterator>
-
-using namespace std;
 
 Server::Server(string name, int port) :
 		name(name), port(port) {
@@ -36,17 +33,20 @@ int Server::start() {
 	return 0;
 }
 
-int Server::add_client(Client*) {
+int Server::add_client(Client *client) {
+	this->clients.push_back(client);
 	return 1;
 }
 
-Client* Server::re_client(string name) {
+Client* Server::re_client(Client *client) {
+	this->clients.remove(client);
 	return NULL;
 }
 
-void Server::sendToClient(Client *sender, char *msg, int len) const {
-	for (vector<Client*>::const_iterator iter = clients.begin(); iter != clients.end(); ++iter) {
-		Client *client = (Client*) *iter;
+void Server::sendToClient(Client *sender, char *msg, int len) {
+	list<Client*>::iterator i;
+	for (i = this->clients.begin(); i != this->clients.end(); ++i) {
+		Client *client = (Client*) *i;
 		if (sender != client) {
 			send(client->getSocket(), msg, len, 0);
 		}

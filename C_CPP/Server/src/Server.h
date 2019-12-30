@@ -9,8 +9,8 @@
 #define SERVER_H_
 
 #include <netinet/in.h>
+#include <list>
 #include <string>
-#include <vector>
 
 #include "Client.h"
 
@@ -27,13 +27,13 @@ public:
 	}
 
 	int add_client(Client*);
-	Client* re_client(string name);
+	Client* re_client(Client*);
 
 	int getPort() const {
 		return port;
 	}
 
-	void sendToClient(Client*, char *msg, int len) const;
+	void sendToClient(Client*, char *msg, int len);
 
 private:
 	string name { "Unknow" };
@@ -41,7 +41,7 @@ private:
 	int server_socket { NULL };
 	sockaddr_in server_socket_addr { 0 };
 
-	vector<Client*> clients;
+	list<Client*> clients;
 
 	static void* do_accept_task(void *_server);
 };

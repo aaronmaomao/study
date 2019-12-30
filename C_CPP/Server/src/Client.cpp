@@ -17,7 +17,7 @@
 
 using namespace std;
 
-Client::Client(int socket, const Server &server) :
+Client::Client(int socket, Server &server) :
 		socket(socket), server(server) {
 	pthread_t pthread;
 	pthread_create(&pthread, NULL, do_client_task, (void*) this);
