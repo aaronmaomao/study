@@ -10,6 +10,14 @@
       </launchConfigurationType>
    </extension>
    <extension
+         point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+      <launchConfigurationTypeImage
+            configTypeID="aom.maozj.study.dsf.launchConfigurationType"
+            icon="icons/launch.png"
+            id="aom.maozj.study.dsf.launchConfigurationTypeImage">
+      </launchConfigurationTypeImage>
+   </extension>
+   <extension
          point="org.eclipse.debug.core.launchDelegates">
       <launchDelegate
             delegate="aom.maozj.study.dsf.launch.MLaunchConfigurationDelegate"
@@ -20,12 +28,52 @@
       </launchDelegate>
    </extension>
    <extension
-         point="org.eclipse.debug.ui.launchConfigurationTypeImages">
-      <launchConfigurationTypeImage
-            configTypeID="aom.maozj.study.dsf.launchConfigurationType"
-            icon="icons/launch.png"
-            id="aom.maozj.study.dsf.launchConfigurationTypeImage">
-      </launchConfigurationTypeImage>
+         point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+      <launchConfigurationTabGroup
+            class="aom.maozj.study.dsf.launch.tab.MLaunchConfigurationTabGroup"
+            id="aom.maozj.study.dsf.launchConfigurationTabGroup"
+            type="aom.maozj.study.dsf.launchConfigurationType">
+      </launchConfigurationTabGroup>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTabs">
+      <tab
+            class="aom.maozj.study.dsf.launch.tab.MLaunchConfigurationTab"
+            group="aom.maozj.study.dsf.launchConfigurationTabGroup"
+            id="aom.maozj.study.dsf.tab"
+            name="Main Tab">
+      </tab>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.adapters">
+      <factory
+            adaptableType="aom.maozj.study.dsf.launch.MLaunch"
+            class="aom.maozj.study.dsf.MDebugAdapterFactory">
+         <adapter
+               type="org.eclipse.debug.internal.ui.viewers.model.provisional.IElementContentProvider">
+         </adapter>
+         <adapter
+               type="org.eclipse.debug.internal.ui.viewers.model.provisional.IModelProxyFactory">
+         </adapter>
+         <adapter
+               type="org.eclipse.debug.ui.contexts.ISuspendTrigger">
+         </adapter>
+         <adapter
+               type="org.eclipse.debug.internal.ui.viewers.model.provisional.IColumnPresentationFactory">
+         </adapter>
+         <adapter
+               type="org.eclipse.debug.core.commands.ITerminateHandler">
+         </adapter>
+         <adapter
+               type="org.eclipse.cdt.debug.core.model.IConnectHandler">
+         </adapter>
+         <adapter
+               type="org.eclipse.debug.core.commands.IDisconnectHandler">
+         </adapter>
+         <adapter
+               type="org.eclipse.cdt.debug.core.model.IDebugNewExecutableHandler">
+         </adapter>
+      </factory>
    </extension>
 
 </plugin>
