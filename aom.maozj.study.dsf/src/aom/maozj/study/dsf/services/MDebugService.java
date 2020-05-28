@@ -4,7 +4,6 @@ import org.eclipse.cdt.dsf.concurrent.DataRequestMonitor;
 import org.eclipse.cdt.dsf.concurrent.ImmediateRequestMonitor;
 import org.eclipse.cdt.dsf.concurrent.RequestMonitor;
 import org.eclipse.cdt.dsf.datamodel.IDMContext;
-import org.eclipse.cdt.dsf.debug.service.command.ICommandControlService.ICommandControlDMContext;
 import org.eclipse.cdt.dsf.service.AbstractDsfService;
 import org.eclipse.cdt.dsf.service.DsfSession;
 import org.eclipse.cdt.dsf.service.IDsfService;
@@ -43,6 +42,7 @@ public class MDebugService extends AbstractDsfService implements IDsfService {
 		// TODO Auto-generated method stub
 		return Activator.getDefault().getBundle().getBundleContext();
 	}
+	
 
 	public void canCustomService(IDMContext ctx, DataRequestMonitor<Boolean> rm) {
 		

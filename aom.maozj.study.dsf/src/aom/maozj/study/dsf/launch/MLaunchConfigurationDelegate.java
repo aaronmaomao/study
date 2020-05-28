@@ -1,9 +1,13 @@
 package aom.maozj.study.dsf.launch;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+
 import org.eclipse.cdt.dsf.concurrent.Sequence;
 import org.eclipse.cdt.dsf.debug.service.IDsfDebugServicesFactory;
 import org.eclipse.cdt.dsf.gdb.launching.GdbLaunch;
 import org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate;
+import org.eclipse.cdt.dsf.gdb.service.command.IGDBControl;
 import org.eclipse.cdt.dsf.service.DsfSession;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -39,6 +43,7 @@ public class MLaunchConfigurationDelegate extends GdbLaunchDelegate implements I
 	public void launch(ILaunchConfiguration configuration, String mode, ILaunch launch, IProgressMonitor monitor) throws CoreException {
 		// TODO Auto-generated method stub
 		super.launch(configuration, mode, launch, monitor);
+		
 	}
 
 	@Override
@@ -60,5 +65,4 @@ public class MLaunchConfigurationDelegate extends GdbLaunchDelegate implements I
 		// TODO Auto-generated method stub
 		return Activator.PLUGIN_ID;
 	}
-
 }
