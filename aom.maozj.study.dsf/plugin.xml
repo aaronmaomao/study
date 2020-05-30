@@ -75,5 +75,45 @@
          </adapter>
       </factory>
    </extension>
+   <extension
+         point="org.eclipse.debug.ui.debugModelPresentations">
+      <debugModelPresentation
+            class="aom.maozj.study.dsf.viewmodel.MDebugModelPresentation"
+            id="aom.maozj.study.dsf.debugModelPresentation">
+      </debugModelPresentation>
+   </extension>
+   <extension
+         point="org.eclipse.ui.contexts">
+      <context
+            description="test context"
+            id="aom.maozj.study.dsf.context"
+            name="test context"
+            parentId="org.eclipse.cdt.debug.ui.debugging">
+      </context>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.contextViewBindings">
+      <contextViewBinding
+            autoClose="true"
+            autoOpen="true"
+            contextId="aom.maozj.study.dsf.context"
+            viewId="aom.maozj.study.dsf.ui.view.MView">
+      </contextViewBinding>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.debugModelContextBindings">
+      <modelContextBinding
+            contextId="aom.maozj.study.dsf.context"
+            debugModelId="aom.maozj.study.dsf.debugModelPresentation">
+      </modelContextBinding>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="aom.maozj.study.dsf.ui.view.MView"
+            id="aom.maozj.study.dsf.ui.view.MView"
+            name="M ViewPart">
+      </view>
+   </extension>
 
 </plugin>
