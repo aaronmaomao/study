@@ -23,4 +23,9 @@ public class MLaunch extends GdbLaunch {
 		
 	}
 
+	@Override
+	public <T> T getAdapter(Class<T> adapter) {
+		// TODO Auto-generated method stub
+		return super.getAdapter(adapter);
+	}
 }
