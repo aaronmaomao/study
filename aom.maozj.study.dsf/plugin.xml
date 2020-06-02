@@ -26,6 +26,13 @@
             name="Study DSF Launch Delegate"
             type="aom.maozj.study.dsf.launchConfigurationType">
       </launchDelegate>
+      <launchDelegate
+            delegate="aom.maozj.study.traditional.launch.TLaunchConfigurationDelegate"
+            id="aom.maozj.study.dsf.launchDelegate1"
+            modes="debug"
+            name="Study traditional Launch Delegate"
+            type="aom.maozj.study.dsf.launchConfigurationType">
+      </launchDelegate>
    </extension>
    <extension
          point="org.eclipse.debug.ui.launchConfigurationTabGroups">
@@ -72,6 +79,22 @@
          </adapter>
          <adapter
                type="org.eclipse.cdt.debug.core.model.IDebugNewExecutableHandler">
+         </adapter>
+      </factory>
+      <factory
+            adaptableType="aom.maozj.study.dsf.Factory1"
+            class="aom.maozj.study.traditional.TLaunchAdapterFactory">
+         <adapter
+               type="org.eclipse.debug.internal.ui.viewers.model.provisional.IElementContentProvider">
+         </adapter>
+         <adapter
+               type="org.eclipse.debug.internal.ui.viewers.model.provisional.IModelProxyFactory">
+         </adapter>
+         <adapter
+               type="org.eclipse.debug.ui.contexts.ISuspendTrigger">
+         </adapter>
+         <adapter
+               type="org.eclipse.debug.internal.ui.viewers.model.provisional.IColumnPresentationFactory">
          </adapter>
       </factory>
    </extension>
